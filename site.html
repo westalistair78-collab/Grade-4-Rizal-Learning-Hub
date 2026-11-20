@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grade 4 – Rizal Learning Hub | Collado Elementary School</title>
+  <!-- Load Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Load Google Font: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            crimson: {
+              50: '#fdf2f4',
+              100: '#fce7eb',
+              700: '#991b32',
+              800: '#800020', // Primary Burgundy/Crimson
+              900: '#5c0017',
+            },
+            gold: {
+              100: '#fef9c3',
+              400: '#facc15',
+              500: '#eab308',
+              600: '#ca8a04', // Metallic Gold Accent
+              700: '#a16207',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Base typography & accessibility scaling */
+    :root {
+      --base-font-size: 16px;
+    }
+
+    html {
+      font-size: var(--base-font-size);
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* High-visibility focus indicators for keyboard navigation (WCAG AAA) */
+    *:focus-visible {
+      outline: 3px solid #eab308 !important;
+      outline-offset: 3px !important;
+      border-radius: 0.375rem;
+    }
+
+    /* High Contrast Mode Overrides */
+    body.high-contrast {
+      background-color: #000000 !important;
+      color: #ffffff !important;
+    }
+
+    body.high-contrast .hc-surface {
+      background-color: #111111 !important;
+      color: #ffffff !important;
+      border: 2px solid #facc15 !important;
+    }
+
+    body.high-contrast .hc-header {
+      background-color: #000000 !important;
+      border-bottom: 3px solid #facc15 !important;
+    }
+
+    body.high-contrast .hc-text-muted {
+      color: #fef08a !important;
+    }
+
+    body.high-contrast .hc-badge {
+      background-color: #facc15 !important;
+      color: #000000 !important;
+      font-weight: 800 !important;
+    }
+
+    body.high-contrast .hc-btn-primary {
+      background-color: #facc15 !important;
+      color: #000000 !important;
+      border: 2px solid #ffffff !important;
+    }
+
+    body.high-contrast .hc-btn-secondary {
+      background-color: #000000 !important;
+      color: #facc15 !important;
+      border: 2px solid #facc15 !important;
+    }
+
+    /* Custom subtle pattern for hero banner */
+    .hero-pattern {
+      background-image: radial-gradient(rgba(234, 179, 8, 0.18) 1.5px, transparent 1.5px);
+      background-size: 24px 24px;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased min-h-screen flex flex-col transition-colors duration-200">
+
+  <!-- Skip to Main Content Link for Screen Readers & Keyboard Users -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-5 focus:py-3 focus:bg-gold-500 focus:text-slate-950 focus:font-bold focus:rounded-lg focus:shadow-xl">
+    Skip to Main Content
+  </a>
+
+  <!-- Accessibility Utility Toolbar -->
+  <div role="region" aria-label="Accessibility Controls" class="bg-crimson-900 text-white border-b border-gold-500/40 px-4 py-2.5 text-sm hc-header">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-2">
+        <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-gold-500 text-crimson-900 font-extrabold text-xs" aria-hidden="true">♿</span>
+        <span class="font-medium tracking-wide">WCAG AA/AAA Accessible Learning Hub</span>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-2 sm:gap-3">
+        <!-- Font Size Controls -->
+        <div class="inline-flex items-center bg-crimson-800/80 rounded-lg p-1 border border-gold-500/30" role="group" aria-label="Text Size Adjustment">
+          <button type="button" onclick="adjustFontSize(-1)" class="px-2.5 py-1.5 rounded-md hover:bg-crimson-700 font-bold text-xs sm:text-sm transition" aria-label="Decrease text size" title="Decrease text size">
+            A-
+          </button>
+          <button type="button" onclick="resetFontSize()" class="px-2.5 py-1.5 rounded-md hover:bg-crimson-700 font-semibold text-xs sm:text-sm border-x border-gold-500/20 transition" aria-label="Reset text size to default" title="Reset text size">
+            100%
+          </button>
+          <button type="button" onclick="adjustFontSize(1)" class="px-2.5 py-1.5 rounded-md hover:bg-crimson-700 font-bold text-xs sm:text-sm transition" aria-label="Increase text size" title="Increase text size">
+            A+
+          </button>
+        </div>
+
+        <!-- High Contrast Toggle -->
+        <button type="button" id="contrast-toggle" onclick="toggleHighContrast()" aria-pressed="false" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-gold-500 hover:bg-gold-400 text-crimson-950 font-bold text-xs sm:text-sm shadow-sm transition hc-btn-primary">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="9"></circle>
+            <path d="M12 3v18a9 9 0 0 0 0-18z" fill="currentColor"></path>
+          </svg>
+          <span id="contrast-label">High Contrast: Off</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Primary Site Header & Navigation -->
+  <header class="bg-crimson-800 text-white shadow-lg sticky top-0 z-40 border-b-4 border-gold-500 hc-header">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between py-4 gap-4">
+        
+        <!-- School & Class Branding -->
+        <div class="flex items-center justify-between">
+          <button type="button" onclick="navigateTo('home')" class="flex items-center gap-3.5 text-left group">
+            <!-- Custom SVG School Emblem with Accessible Label -->
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-gold-400 to-gold-600 p-0.5 shadow-md flex-shrink-0">
+              <div class="w-full h-full bg-crimson-900 rounded-[10px] flex items-center justify-center">
+                <svg class="w-7 h-7 text-gold-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" role="img" aria-label="Collado Elementary School Torch and Book Emblem">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+              </div>
+            </div>
+            <div>
+              <span class="block text-xs font-bold uppercase tracking-widest text-gold-400">Collado Elementary School</span>
+              <h1 class="text-xl sm:text-2xl font-extrabold tracking-tight text-white group-hover:text-gold-300 transition">
+                Grade 4 – Rizal Learning Hub
+              </h1>
+            </div>
+          </button>
+
+          <!-- Mobile Navigation Toggle -->
+          <button type="button" id="mobile-menu-btn" onclick="toggleMobileMenu()" aria-expanded="false" aria-controls="primary-nav" class="lg:hidden p-2.5 rounded-lg bg-crimson-900 text-gold-400 hover:bg-crimson-700 border border-gold-500/40" aria-label="Toggle Navigation Menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Primary Navigation Tabs -->
+        <nav id="primary-nav" aria-label="Primary Subject Navigation" class="hidden lg:flex flex-col lg:flex-row gap-1.5 sm:gap-2 pt-2 lg:pt-0 border-t lg:border-t-0 border-crimson-700">
+          <button type="button" data-nav="home" onclick="navigateTo('home')" class="nav-tab px-4 py-2.5 rounded-lg font-bold text-sm transition text-left lg:text-center bg-gold-500 text-crimson-950 shadow-sm">
+            Home
+          </button>
+          <button type="button" data-nav="science" onclick="navigateTo('science')" class="nav-tab px-4 py-2.5 rounded-lg font-semibold text-sm transition text-left lg:text-center text-white hover:bg-crimson-700">
+            Science 4
+          </button>
+          <button type="button" data-nav="english" onclick="navigateTo('english')" class="nav-tab px-4 py-2.5 rounded-lg font-semibold text-sm transition text-left lg:text-center text-white hover:bg-crimson-700">
+            English &amp; Reading 4
+          </button>
+          <button type="button" data-nav="math" onclick="navigateTo('math')" class="nav-tab px-4 py-2.5 rounded-lg font-semibold text-sm transition text-left lg:text-center text-white hover:bg-crimson-700">
+            Mathematics 4
+          </button>
+          <button type="button" data-nav="about" onclick="navigateTo('about')" class="nav-tab px-4 py-2.5 rounded-lg font-semibold text-sm transition text-left lg:text-center text-white hover:bg-crimson-700">
+            About Pre-Service Teacher
+          </button>
+        </nav>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main id="main-content" class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+
+    <!-- ========================================================= -->
+    <!-- SECTION 1: HOME PAGE                                      -->
+    <!-- ========================================================= -->
+    <section id="section-home" aria-labelledby="home-heading" class="space-y-10">
+      
+      <!-- Hero Welcome Banner -->
+      <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-crimson-900 via-crimson-800 to-crimson-900 text-white p-6 sm:p-10 lg:p-12 shadow-xl border-2 border-gold-500/60 hero-pattern hc-surface">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-8 space-y-5">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gold-500/20 border border-gold-400 text-gold-300 text-xs sm:text-sm font-bold tracking-wide hc-badge">
+              <span>Field Study 2 • Instructional Materials Repository</span>
+            </div>
+            
+            <h2 id="home-heading" class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
+              Welcome, <span class="text-gold-400">Grade 4 – Rizal</span> Learners!
+            </h2>
+            
+            <p class="text-base sm:text-lg text-slate-100 leading-relaxed max-w-3xl">
+              Mabuhay! Welcome to our accessible online learning hub for <strong>Collado Elementary School</strong>, prepared under the mentorship of our Cooperating Teacher, <strong class="text-gold-300 underline decoration-gold-500 underline-offset-4">Teacher Floreza G. Valdez (Teacher IV)</strong>. Here, pupils and parents can easily explore lesson slides, captioned videos, interactive educational games, and downloadable worksheets anytime.
+            </p>
+
+            <div class="flex flex-wrap gap-3 pt-2">
+              <button type="button" onclick="navigateTo('science')" class="px-6 py-3.5 rounded-xl bg-gold-500 hover:bg-gold-400 text-crimson-950 font-extrabold text-sm sm:text-base shadow-md transition inline-flex items-center gap-2 hc-btn-primary">
+                <span>Start Learning Now</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </button>
+              <button type="button" onclick="navigateTo('about')" class="px-6 py-3.5 rounded-xl bg-crimson-950/70 hover:bg-crimson-950 text-white border-2 border-gold-400/70 font-bold text-sm sm:text-base transition hc-btn-secondary">
+                Meet Your Student Teacher
+              </button>
+            </div>
+          </div>
+
+          <!-- Accessible Decorative Illustration Card with Detailed Alt Text -->
+          <div class="lg:col-span-4 flex justify-center">
+            <div class="w-full max-w-sm bg-white/10 backdrop-blur-sm border-2 border-gold-400/50 rounded-2xl p-6 text-center space-y-3 hc-surface">
+              <svg class="w-28 h-28 mx-auto" viewBox="0 0 120 120" fill="none" role="img" aria-label="Illustration of an open golden book surrounded by stars representing Science, Reading, and Mathematics for Grade 4 Rizal">
+                <circle cx="60" cy="60" r="54" fill="#5c0017" stroke="#eab308" stroke-width="3"/>
+                <path d="M26 42C26 38.6863 28.6863 36 32 36H56C58.2091 36 60 37.7909 60 40V84C60 81.7909 58.2091 80 56 80H32C28.6863 80 26 77.3137 26 74V42Z" fill="#fef9c3" stroke="#eab308" stroke-width="2.5"/>
+                <path d="M94 42C94 38.6863 91.3137 36 88 36H64C61.7909 36 60 37.7909 60 40V84C60 81.7909 61.7909 80 64 80H88C91.3137 80 94 77.3137 94 74V42Z" fill="#ffffff" stroke="#eab308" stroke-width="2.5"/>
+                <line x1="34" y1="48" x2="52" y2="48" stroke="#800020" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="34" y1="57" x2="52" y2="57" stroke="#800020" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="34" y1="66" x2="46" y2="66" stroke="#800020" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="68" y1="48" x2="86" y2="48" stroke="#800020" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="68" y1="57" x2="86" y2="57" stroke="#800020" stroke-width="2.5" stroke-linecap="round"/>
+                <circle cx="60" cy="24" r="6" fill="#facc15"/>
+              </svg>
+              <p class="font-bold text-gold-300 text-base">Section: Grade 4 – Rizal</p>
+              <p class="text-xs text-slate-200 hc-text-muted">All materials follow DepEd MATATAG / K–12 competencies and WCAG accessibility standards.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick-Access Subject Cards -->
+      <div>
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-6 gap-2">
+          <div>
+            <h3 class="text-2xl font-extrabold text-crimson-900 hc-text-muted">Explore Subject Repositories</h3>
+            <p class="text-slate-700 mt-1 hc-text-muted">Select a subject area below to access presentations, captioned videos, games, and worksheets.</p>
+          </div>
+          <span class="text-xs font-bold uppercase tracking-wider text-crimson-800 bg-crimson-100 px-3 py-1.5 rounded-lg border border-crimson-700/20 hc-badge">
+            3 Core Subjects Available
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <!-- Card 1: Science 4 -->
+          <article class="bg-white rounded-2xl border-2 border-slate-200 hover:border-crimson-800 shadow-sm hover:shadow-lg transition flex flex-col justify-between p-6 hc-surface">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="w-12 h-12 rounded-xl bg-crimson-100 text-crimson-800 flex items-center justify-center font-extrabold text-2xl border border-crimson-800/20" role="img" aria-label="Magnet icon representing Science 4">
+                  🧲
+                </span>
+                <span class="px-3 py-1 rounded-full bg-gold-100 text-gold-700 font-bold text-xs border border-gold-600/30 hc-badge">
+                  Quarter 3 • Force &amp; Motion
+                </span>
+              </div>
+              <h4 class="text-xl font-extrabold text-slate-900 mb-2 hc-text-muted">Science 4</h4>
+              <p class="text-slate-700 text-sm leading-relaxed mb-4 hc-text-muted">
+                Discover how magnets attract and repel, classify magnetic vs. non-magnetic objects, and play <strong>Magnet Masters: The Great Magnet Adventure!</strong>
+              </p>
+            </div>
+            <button type="button" onclick="navigateTo('science')" class="w-full py-3 px-4 rounded-xl bg-crimson-800 hover:bg-crimson-900 text-white font-bold text-sm transition flex items-center justify-center gap-2 hc-btn-primary">
+              <span>Open Science 4 Materials</span>
+              <span aria-hidden="true">→</span>
+            </button>
+          </article>
+
+          <!-- Card 2: English & Reading 4 -->
+          <article class="bg-white rounded-2xl border-2 border-slate-200 hover:border-crimson-800 shadow-sm hover:shadow-lg transition flex flex-col justify-between p-6 hc-surface">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="w-12 h-12 rounded-xl bg-crimson-100 text-crimson-800 flex items-center justify-center font-extrabold text-2xl border border-crimson-800/20" role="img" aria-label="Open book icon representing English and Reading 4">
+                  📖
+                </span>
+                <span class="px-3 py-1 rounded-full bg-gold-100 text-gold-700 font-bold text-xs border border-gold-600/30 hc-badge">
+                  Comprehension &amp; Vocabulary
+                </span>
+              </div>
+              <h4 class="text-xl font-extrabold text-slate-900 mb-2 hc-text-muted">English &amp; Reading 4</h4>
+              <p class="text-slate-700 text-sm leading-relaxed mb-4 hc-text-muted">
+                Strengthen reading fluency, sequence story events, read along with captioned stories, and embark on <strong>Reading Quest: Unlock the World of Words!</strong>
+              </p>
+            </div>
+            <button type="button" onclick="navigateTo('english')" class="w-full py-3 px-4 rounded-xl bg-crimson-800 hover:bg-crimson-900 text-white font-bold text-sm transition flex items-center justify-center gap-2 hc-btn-primary">
+              <span>Open English 4 Materials</span>
+              <span aria-hidden="true">→</span>
+            </button>
+          </article>
+
+          <!-- Card 3: Mathematics 4 -->
+          <article class="bg-white rounded-2xl border-2 border-slate-200 hover:border-crimson-800 shadow-sm hover:shadow-lg transition flex flex-col justify-between p-6 hc-surface">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="w-12 h-12 rounded-xl bg-crimson-100 text-crimson-800 flex items-center justify-center font-extrabold text-2xl border border-crimson-800/20" role="img" aria-label="Abacus and numbers icon representing Mathematics 4">
+                  🧮
+                </span>
+                <span class="px-3 py-1 rounded-full bg-gold-100 text-gold-700 font-bold text-xs border border-gold-600/30 hc-badge">
+                  Numbers &amp; Operations
+                </span>
+              </div>
+              <h4 class="text-xl font-extrabold text-slate-900 mb-2 hc-text-muted">Mathematics 4</h4>
+              <p class="text-slate-700 text-sm leading-relaxed mb-4 hc-text-muted">
+                Master place value, multi-digit operations, and word problems using visual guides and <strong>Math Quest: Numbers to Higher Levels</strong>.
+              </p>
+            </div>
+            <button type="button" onclick="navigateTo('math')" class="w-full py-3 px-4 rounded-xl bg-crimson-800 hover:bg-crimson-900 text-white font-bold text-sm transition flex items-center justify-center gap-2 hc-btn-primary">
+              <span>Open Math 4 Materials</span>
+              <span aria-hidden="true">→</span>
+            </button>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- Quick Accessibility Highlights Strip -->
+      <div class="bg-white rounded-2xl border-2 border-gold-500/50 p-6 shadow-sm hc-surface">
+        <h3 class="text-lg font-extrabold text-crimson-900 mb-4 flex items-center gap-2 hc-text-muted">
+          <span class="w-2.5 h-6 bg-gold-500 rounded-full inline-block" aria-hidden="true"></span>
+          <span>How This Repository Supports Every Learner</span>
+        </h3>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 hc-surface">
+            <p class="font-bold text-slate-900 mb-1 hc-text-muted">1. High Color Contrast</p>
+            <p class="text-slate-700 hc-text-muted">Deep burgundy, gold, and crisp dark slate text ensure strain-free readability on phones, tablets, and desktops.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 hc-surface">
+            <p class="font-bold text-slate-900 mb-1 hc-text-muted">2. Descriptive Alt Text &amp; Captions</p>
+            <p class="text-slate-700 hc-text-muted">Every visual diagram includes descriptive alternative text, and all video lessons include closed captions and text transcripts.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 hc-surface">
+            <p class="font-bold text-slate-900 mb-1 hc-text-muted">3. Simple, Keyboard-Friendly Navigation</p>
+            <p class="text-slate-700 hc-text-muted">Clear headings, large tap targets, and visible focus rings make navigating effortless for pupils and teachers.</p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- SECTION 2: SCIENCE 4                                      -->
+    <!-- ========================================================= -->
+    <section id="section-science" aria-labelledby="science-heading" class="hidden space-y-8">
+      <div class="bg-crimson-800 text-white rounded-2xl p-6 sm:p-8 border-b-4 border-gold-500 shadow-md hc-surface">
+        <span class="inline-block px-3 py-1 rounded-full bg-gold-500 text-crimson-950 font-extrabold text-xs uppercase tracking-wider mb-3 hc-badge">
+          Science 4 • Force, Motion &amp; Energy
+        </span>
+        <h2 id="science-heading" class="text-2xl sm:text-3xl font-extrabold">Forces and Magnets: Magnetic Interactions</h2>
+        <p class="text-slate-100 mt-2 max-w-3xl">
+          Learn how magnets interact with different objects, identify magnetic poles (North and South), and explore real-life uses of magnets through structured digital resources.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <!-- 1. Lesson Presentation -->
+        <article class="bg-white rounded-2xl border-2 border-slate-200 p-6 shadow-sm flex flex-col justify-between hc-surface">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="px-3 py-1 rounded-lg bg-amber-100 text-amber-900 font-bold text-xs border border-amber-300 hc-badge">
+                📊 Lesson Presentation (Slides)
+              </span>
+              <span class="text-xs font-semibold text-slate-600 hc-text-muted">18 Slides • Large 28pt Font</span>
+            </div>
+            <h3 class="text-xl font-extrabold text-slate-900 mb-2 hc-text-muted">Introduction to Magnets and Magnetism</h3>
+            <p class="text-sm text-slate-700 leading-relaxed mb-4 hc-text-muted">
+              An illustrated slide deck explaining magnetic vs. non-magnetic materials, attraction and repulsion of poles, and everyday uses of magnets.
+            </p>
+            <!-- Visual Diagram with Alt Text -->
+            <figure class="mb-4 p-3 rounded-xl bg-slate-50 border border-slate-200 flex items-center gap-4 hc-surface">
+              <svg class="w-20 h-12 flex-shrink-0" viewBox="0 0 100 50" role="img" aria-label="Diagram of a bar magnet with red North pole labeled N and blue South pole labeled S">
+                <rect x="5" y="10" width="45" height="30" rx="4" fill="#b91c1c"/>
+                <rect x="50" y="10" width="45" height="30" rx="4" fill="#1d4ed8"/>
+                <text x="27" y="30" fill="#ffffff" font-size="14" font-weight="bold" text-anchor="middle">N</text>
+                <text x="72" y="30" fill="#ffffff" font-size="14" font-weight="bold" text-anchor="middle">S</text>
+              </svg>
+              <figcaption class="text-xs text-slate-700 hc-text-muted">
+                <strong>Accessible Diagram:</strong> Bar magnet illustrating North (N) and South (S) poles. Opposite poles attract; like poles repel.
+              </figcaption>
+            </figure>
+          </div>
+          <div class="flex flex-wrap gap-2.5 pt-2">
+            <button type="button" onclick="openResourceModal('slide', 'Introduction to Magnets and Magnetism', 'Science 4 • Quarter 3', 'Slide 1: What is a Magnet? A magnet is an object that produces a magnetic field and attracts metals like iron, nickel, and cobalt.\nSlide 2: Magnetic Poles — Every magnet has a North Pole (N) and a South Pole (S).\nSlide 3: Law of Magnetism — Unlike poles attract (N-S), while like poles repel (N-N or S-S).\nSlide 4: Everyday Uses — Refrigerator doors, compasses, speakers, and magnetic latches.')" class="flex-1 py-2.5 px-4 rounded-xl bg-crimson-800 hover:bg-crimson-900 text-white font-bold text-sm transition hc-btn-primary">
+              Preview Slides
+            </button>
+            <button type="button" onclick="triggerDownload('Science4_Magnets_Presentation.pptx')" class="py-2.5 px-4 rounded-xl border-2 border-crimson-800 text-crimson-900 hover:bg-crimson-50 font-bold text-sm transition hc-btn-secondary">
+              Download PPTX
+            </button>
+          </div>
+        </article>
+
+        <!-- 2. Video Presentation -->
+        <article class="bg-white rounded-2xl border-2 border-slate-200 p-6 shadow-sm flex flex-col justify-between hc-surface">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="px-3 py-1 rounded-lg bg-sky-100 text-sky-900 font-bold text-xs border border-sky-300 hc-badge">
+                🎬 Video Presentation
+              </span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-900 text-white font-extrabold text-xs tracking-wider hc-badge" title="Closed Captions Available">
+                [CC] Closed Captions
+              </span>
+            </div>
+            <h3 class="text-xl font-extrabold text-slate-900 mb-2 hc-text-muted">How Magnets Attract and Repel (Video Lab)</h3>
+            <p class="text-sm text-slate-700 leading-relaxed mb-4 hc-text-muted">
+              A 5-minute classroom demonstration testing paperclips, coins, plastic spoons, and wooden pencils with a bar magnet. Includes synchronized captions and full text transcript.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2.5 pt-2">
+            <button type="button" onclick="openResourceModal('video', 'How Magnets Attract and Repel (Video Lab)', 'Duration: 05:12 • Closed Captions Enabled', '[00:00] Teacher: Magandang araw, Grade 4 – Rizal! Today we will test which classroom objects are attracted to a magnet.\n[01:15] Demonstration: When we bring the bar magnet near steel paperclips, they jump toward the magnet because steel contains iron.\n[02:40] Demonstration: Plastic rulers, rubber erasers, and wooden pencils do not move—they are non-magnetic materials.\n[04:10] Summary: Remember, magnets attract ferromagnetic metals (iron, nickel, cobalt).')" class="flex-1 py-2.5 px-4 rounded-xl bg-crimson-800 hover:bg-crimson-900 text-white font-bold text-sm transition hc-btn-primary">
+              Watch &amp; Read Transcript
+            </button>
+          </div>
+        </article>
+
+        <!-- 3. Interactive Game -->
+        <article class="bg-gradient-to-br from-crimson-50 to-amber-50 rounded-2xl border-2 border-gold-500 p-6 shadow-sm flex flex-col justify-between hc-surface">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="px-3 py-1 rounded-lg bg-gold-500 text-crimson-950 font-extrabold text-xs hc-badge">
+                🎮 Interactive Game
+              </span>
+              <span class="text-xs font-bold text-crimson-900 hc-text-muted">Keyboard &amp; Touch Accessible</span>
+            </div>
+            <h3 class="text-xl font-extrabold text-crimson-900 mb-2 hc-text-muted">Magnet Masters: The Great Magnet Adventure!</h3>
+            <p class="text-sm text-slate-800 leading-relaxed mb-4 hc-text-muted">
+              Help the Magnet Explorer sort magnetic and non-magnetic treasures across 3 exciting levels! Built with clear audio feedback, high-contrast buttons, and instant explanations.
+            </p>
+          </div>
+          <button type="button" onclick="openGameModal('Magnet Masters: The Great Magnet Adventure!', 'science')" class="w-full py-3 px-4 rounded-xl bg-gold-500 hover:bg-gold-400 text-crimson-950 font-extrabold text-sm shadow-sm transition hc-btn-primary">
+            Launch Magnet Masters Game ▶
+          </button>
+        </article>
+
+        <!-- 4. Downloadable Worksheet -->
+        <article class="bg-white rounded-2xl border-2 border-slate-200 p-6 shadow-sm flex flex-col justify-between hc-surface">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="px-3 py-1 rounded-lg bg-emerald-100 text-emerald-900 font-bold text-xs border border-emerald-300 hc-badge">
+                📄 Downloadable Worksheet (PDF)
+              </span>
+              <span class="text-xs font-semibold text-slate-600 hc-text-muted">2 Pages • Printable</span>
+            </div>
+            <h3 class="text-xl font-extrabold text-slate-900 mb-2 hc-text-muted">Activity Sheet: Magnetic vs. Non-Magnetic Objects</h3>
+            <p class="text-sm text-slate-700 leading-relaxed mb-4 hc-text-muted">
+              Structured home-and-school observation checklist with clear tables, large writing spaces, and guided reflection questions for Grade 4 – Rizal pupils.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2.5 pt-2">
+            <button type="button" onclick="openResourceModal('worksheet', 'Activity Sheet: Magnetic vs. Non-Magnetic Objects', 'Science 4 Worksheet • Prepared by J. Gusto', 'Name: ________________________   Section: Grade 4 – Rizal\n\nPart I. Directions: Predict whether each object is Magnetic (M) or Non-Magnetic (NM), then test it.\n1. Iron Nail — [  ] Magnetic   [  ] Non-Magnetic\n2. Plastic Spoon — [  ] Magnetic   [  ] Non-Magnetic\n3. Steel Paperclip — [  ] Magnetic   [  ] Non-Magnetic\n4. Wooden Pencil — [  ] Magnetic   [  ] Non-Magnetic\n\nPart II. Reflection: What common material do all magnetic objects share?')" class="flex-1 py-2.5 px-4 rounded-xl border-2 border-crimson-800 text-crimson-900 hover:bg-crimson-50 font-bold text-sm transition hc-btn-secondary">
+              Preview Sheet
+            </button>
+            <button type="button" onclick="triggerDownload('Science4_Magnetic_Objects_Worksheet.pdf')" class="py-2.5 px-4 rounded-xl bg-crimson-800 hover:bg-crimson-900 text-white font-bold text-sm transition hc-btn-primary">
+              Download PDF
+            </button>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- SECTION 3: ENGLISH & READING 4                            -->
+    <!-- ========================================================= -->
+    <section id="section-english" aria-labelledby="english-heading" class="hidden space-y-8">
+      <div class="bg-crimson-800 text-white rounded-2xl p-6 sm:p-8 border-b-4 border-gold-500 shadow-md hc-surface">
+        <span class="inline-block px-3 py-1 rounded-full bg-gold-500 text-crimson-950 font-extrabold text-xs uppercase tracking-wider mb-3 hc-badge">
+          English &amp; Reading 4 • Literacy &amp; Comprehension
+        </span>
+        <h2 id="english-heading" class="text-2xl sm:text-3xl font-extrabold">Reading Comprehension, Story Elements &amp; Vocabulary</h2>
+        <p class="text-slate-100 mt-2 max-w-3xl">
+          Build reading fluency, identify story elements (characters, setting, plot), sequence events accurately, and expand your English vocabulary.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <!-- 1. Lesson Presentation -->
+        <article class="bg-white rounded-2xl border-2 border-slate-200 p-6 shadow-sm flex flex-col justify-between hc-surface">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="px-3 py-1 rounded-lg bg-amber-100 text-amber-900 font-bold text-xs border border-amber-300 hc-badge">
+                📊 Lesson Presentation (Slides)
+              </span>
+              <span class="text-xs font-semibold text-slate-600 hc-text-muted">15 Slides • Sans-Serif Typography</span>
+            </div>
+            <h3 class="text-xl font-extrabold text-slate-900 mb-2 hc-text-muted">Noting Details and Sequencing Events in a Story</h3>
+            <p class="text-sm text-slate-700 leading-relaxed mb-4 hc-text-muted">
+              Visual presentation teaching pupils how to use signal words (<em>First, Next, Then, Finally</em>) and answer <em>Who, What, Where, When,</em> and <em>Why</em> questions.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2.5 pt-2">
+            <button type="button" onclick="openResourceModal('slide', 'Noting Details and Sequencing Events in a Story', 'English 4 • Reading Comprehension', 'Slide 1: What is Noting Details? Paying close attention to important facts such as characters, setting, and key actions.\nSlide 2: Signal Words for Sequencing — First, Next, Then, After that, Finally.\nSlide 3: Guided Practice — Read the short story about Maria planting seedlings in the school garden and order the 4 events.')" class="flex-1 py-2.5 px-4 rounded-xl bg-crimson-800 hover:bg-crimson-900 text-white font-bold text-sm transition hc-btn-primary">
+              Preview Slides
+            </button>
+            <button type="button" onclick="triggerDownload('English4_Sequencing_Events.pptx')" class="py-2.5 px-4 rounded-xl border-2 border-crimson-800 text-crimson-900 hover:bg-crimson-50 font-bold text-sm transition hc-btn-secondary">
+              Download PPTX
+            </button>
+          </div>
+        </article>
+
+        <!-- 2. Video Presentation -->
+        <article class="bg-white rounded-2xl border-2 border-slate-200 p-6 shadow-sm flex flex-col justify-between hc-surface">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="px-3 py-1 rounded-lg bg-sky-100 text-sky-900 font-bold text-xs border border-sky-300 hc-badge">
+                🎬 Video Presentation
+              </span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-900 text-white font-extrabold text-xs tracking-wider hc-badge">
+                [CC] Closed Captions + Transcript
+              </span>
+            </div>
+            <h3 class="text-xl font-extrabold text-slate-900 mb-2 hc-text-muted">Read-Aloud Storytime: "The Honest Woodcutter"</h3>
+            <p class="text-sm text-slate-700 leading-relaxed mb-4 hc-text-muted">
+              Expressive read-aloud video with on-screen highlighted captions, vocabulary pop-ups, and a downloadable reading transcript for guided home practice.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2.5 pt-2">
+            <button type="button" onclick="openResourceModal('video', 'Read-Aloud Storytime: The Honest Woodcutter', 'Duration: 06:30 • Closed Captions & Transcript Included', '[00:00] Narrator: Once upon a time, near a clear forest river, lived a hardworking and honest woodcutter.\n[01:45] Vocabulary Highlight: \"Honest\" means telling the truth and doing what is right even when no one is watching.\n[04:20] Comprehension Check: Why did the river spirit reward the woodcutter with both the golden and silver axes?')" class="flex-1 py-2.5 px-4 rounded-xl bg-crimson-800 hover:bg-crimson-900 text-white font-bold text-sm transition hc-btn-primary">
+              Watch &amp; Read Transcript
+            </button>
+          </div>
+        </article>
+
+        <!-- 3. Interactive Game -->
+        <article class="bg-gradient-to-br from-crimson-50 to-amber-50 rounded-2xl border-2 border-gold-500 p-6 shadow-sm flex flex-col justify-between hc-surface">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="px-3 py-1 rounded-lg bg-gold-500 text-crimson-950 font-extrabold text-xs hc-badge">
+                🎮 Interactive Game
+              </span>
+              <span class="text-xs font-bold text-crimson-900 hc-text-muted">Vocabulary &amp; Comprehension</span>
+            </div>
+            <h3 class="text-xl font-extrabold text-crimson-900 mb-2 hc-text-muted">Reading Quest: Unlock the World of Words!</h3>
+            <p class="text-sm text-slate-800 leading-relaxed mb-4 hc-text-muted">
+              Journey through the Enchanted Library! Use context clues to unlock magic doors, match synonyms, and solve short passage mysteries.
+            </p>
+          </div>
+          <button type="button" onclick="openGameModal('Reading Quest: Unlock the World of Words!', 'english')" class="w-full py-3 px-4 rounded-xl bg-gold-500 hover:bg-gold-400 text-crimson-950 font-extrabold text-sm shadow-sm transition hc-btn-primary">
+            Launch Reading Quest Game ▶
+          </button>
+        </article>
+
+        <!-- 4. Downloadable Worksheet -->
+        <article class="bg-white rounded-2xl border-2 border-slate-200 p-6 shadow-sm flex flex-col justify-between hc-surface">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="px-3 py-1 rounded-lg bg-emerald-100 text-emerald-900 font-bold text-xs border border-emerald-300 hc-badge">
+                📄 Downloadable Worksheet (PDF)
+              </span>
+              <span class="text-xs font-semibold text-slate-600 hc-text-muted">2 Pages • Printable</span>
+            </div>
+            <h3 class="text-xl font-extrabold text-slate-900 mb-2 hc-text-muted">Practice Worksheet: Story Elements &amp; Vocabulary Builder</h3>
+            <p class="text-sm text-slate-700 leading-relaxed mb-4 hc-text-muted">
+              Includes a short passage, a Story Map graphic organizer (Characters, Setting, Beginning, Middle, Ending), and 5 context-clue vocabulary items.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2.5 pt-2">
+            <button type="button" onclick="openResourceModal('worksheet', 'Practice Worksheet: Story Elements & Vocabulary Builder', 'English 4 Worksheet • Grade 4 – Rizal', 'Name: ________________________   Section: Grade 4 – Rizal\n\nDirections: Read the passage \"A Rainy Morning in Talavera\" and complete the Story Map below.\n• Characters: _____________________________\n• Setting (Time & Place): ___________________\n• Main Event: _____________________________\n\nVocabulary Context Clues: Circle the meaning of the underlined word in each sentence.')" class="flex-1 py-2.5 px-4 rounded-xl border-2 border-crimson-800 text-crimson-900 hover:bg-crimson-50 font-bold text-sm transition hc-btn-secondary">
+              Preview Sheet
+            </button>
+            <button type="button" onclick="triggerDownload('English4_Story_Elements_Worksheet.pdf')" class="py-2.5 px-4 rounded-xl bg-crimson-800 hover:bg-crimson-900 text-white font-bold text-sm transition hc-btn-primary">
+              Download PDF
+            </button>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- SECTION 4: MATHEMATICS 4                                  -->
+    <!-- ========================================================= -->
+    <section id="section-math" aria-labelledby="math-heading" class="hidden space-y-8">
+      <div class="bg-crimson-800 text-white rounded-2xl p-6 sm:p-8 border-b-4 border-gold-500 shadow-md hc-surface">
+        <span class="inline-block px-3 py-1 rounded-full bg-gold-500 text-crimson-950 font-extrabold text-xs uppercase tracking-wider mb-3 hc-badge">
+          Mathematics 4 • Numbers &amp; Number Sense
+        </span>
+        <h2 id="math-heading" class="text-2xl sm:text-3xl font-extrabold">Place Value, Whole Numbers &amp; Problem Solving</h2>
+        <p class="text-slate-100 mt-2 max-w-3xl">
+          Build confidence in reading, writing, comparing, and operating with whole numbers up to 1,000,000 using visual place-value charts and step-by-step guides.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <!-- 1. Lesson Presentation -->
+        <article class="bg-white rounded-2xl border-2 border-slate-200 p-6 shadow-sm flex flex-col justify-between hc-surface">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="px-3 py-1 rounded-lg bg-amber-100 text-amber-900 font-bold text-xs border border-amber-300 hc-badge">
+                📊 Lesson Presentation (Slides)
+              </span>
+              <span class="text-xs font-semibold text-slate-600 hc-text-muted">16 Slides • Color-Coded Place Values</span>
+            </div>
+            <h3 class="text-xl font-extrabold text-slate-900 mb-2 hc-text-muted">Place Value and Value of Digits up to 100,000</h3>
+            <p class="text-sm text-slate-700 leading-relaxed mb-4 hc-text-muted">
+              Step-by-step visual slides using base-ten blocks and high-contrast place-value charts to distinguish between a digit's place value and its numerical value.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2.5 pt-2">
+            <button type="button" onclick="openResourceModal('slide', 'Place Value and Value of Digits up to 100,000', 'Mathematics 4 • Quarter 1/Review', 'Slide 1: Place Value Chart — Hundred Thousands | Ten Thousands | Thousands | Hundreds | Tens | Ones.\nSlide 2: Example Number: 48,592 — The digit 8 is in the Thousands place, and its value is 8,000.\nSlide 3: Expanded Form — 40,000 + 8,000 + 500 + 90 + 2.')" class="flex-1 py-2.5 px-4 rounded-xl bg-crimson-800 hover:bg-crimson-900 text-white font-bold text-sm transition hc-btn-primary">
+              Preview Slides
+            </button>
+            <button type="button" onclick="triggerDownload('Math4_Place_Value_Slides.pptx')" class="py-2.5 px-4 rounded-xl border-2 border-crimson-800 text-crimson-900 hover:bg-crimson-50 font-bold text-sm transition hc-btn-secondary">
+              Download PPTX
+            </button>
+          </div>
+        </article>
+
+        <!-- 2. Video Presentation -->
+        <article class="bg-white rounded-2xl border-2 border-slate-200 p-6 shadow-sm flex flex-col justify-between hc-surface">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="px-3 py-1 rounded-lg bg-sky-100 text-sky-900 font-bold text-xs border border-sky-300 hc-badge">
+                🎬 Video Presentation
+              </span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-900 text-white font-extrabold text-xs tracking-wider hc-badge">
+                [CC] Closed Captions + Steps
+              </span>
+            </div>
+            <h3 class="text-xl font-extrabold text-slate-900 mb-2 hc-text-muted">Solving Multi-Step Word Problems Using AGONSA</h3>
+            <p class="text-sm text-slate-700 leading-relaxed mb-4 hc-text-muted">
+              Clear walkthrough showing how to solve real-life Math problems using the <strong>AGONSA</strong> method (Asked, Given, Operation, Number Sentence, Solution, Answer).
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2.5 pt-2">
+            <button type="button" onclick="openResourceModal('video', 'Solving Multi-Step Word Problems Using AGONSA', 'Duration: 05:45 • Closed Captions Enabled', '[00:00] Teacher: Hello Grade 4 – Rizal! Let us break down word problems easily using AGONSA.\n[01:20] A – What is Asked? Read the question at the end of the problem.\n[02:15] G – What are the Given facts? List the numbers and labels.\n[03:30] O, N, S, A – Choose the Operation, write the Number Sentence, show your Solution, and label your final Answer!')" class="flex-1 py-2.5 px-4 rounded-xl bg-crimson-800 hover:bg-crimson-900 text-white font-bold text-sm transition hc-btn-primary">
+              Watch &amp; Read Transcript
+            </button>
+          </div>
+        </article>
+
+        <!-- 3. Interactive Game -->
+        <article class="bg-gradient-to-br from-crimson-50 to-amber-50 rounded-2xl border-2 border-gold-500 p-6 shadow-sm flex flex-col justify-between hc-surface">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="px-3 py-1 rounded-lg bg-gold-500 text-crimson-950 font-extrabold text-xs hc-badge">
+                🎮 Interactive Game
+              </span>
+              <span class="text-xs font-bold text-crimson-900 hc-text-muted">Self-Paced Number Challenge</span>
+            </div>
+            <h3 class="text-xl font-extrabold text-crimson-900 mb-2 hc-text-muted">Math Quest: Numbers to Higher Levels</h3>
+            <p class="text-sm text-slate-800 leading-relaxed mb-4 hc-text-muted">
+              Climb the Mountain of Numbers! Solve place-value puzzles, round large numbers, and complete mental math challenges at your own comfortable pace.
+            </p>
+          </div>
+          <button type="button" onclick="openGameModal('Math Quest: Numbers to Higher Levels', 'math')" class="w-full py-3 px-4 rounded-xl bg-gold-500 hover:bg-gold-400 text-crimson-950 font-extrabold text-sm shadow-sm transition hc-btn-primary">
+            Launch Math Quest Game ▶
+          </button>
+        </article>
+
+        <!-- 4. Downloadable Worksheet -->
+        <article class="bg-white rounded-2xl border-2 border-slate-200 p-6 shadow-sm flex flex-col justify-between hc-surface">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="px-3 py-1 rounded-lg bg-emerald-100 text-emerald-900 font-bold text-xs border border-emerald-300 hc-badge">
+                📄 Downloadable Worksheet (PDF)
+              </span>
+              <span class="text-xs font-semibold text-slate-600 hc-text-muted">2 Pages • Grid-Aligned</span>
+            </div>
+            <h3 class="text-xl font-extrabold text-slate-900 mb-2 hc-text-muted">Practice Drills: Place Value, Rounding &amp; Operations</h3>
+            <p class="text-sm text-slate-700 leading-relaxed mb-4 hc-text-muted">
+              Includes neatly aligned number grids to prevent digit-alignment errors, plus 10 practice items and 2 real-world word problems.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2.5 pt-2">
+            <button type="button" onclick="openResourceModal('worksheet', 'Practice Drills: Place Value, Rounding & Operations', 'Mathematics 4 Worksheet • Grade 4 – Rizal', 'Name: ________________________   Section: Grade 4 – Rizal\n\nPart I. Give the place value and value of the underlined digit.\n1. 64,821  -> Place Value: ______________  Value: _________\n2. 91,045  -> Place Value: ______________  Value: _________\n\nPart II. Round each number to the nearest Thousands.\n3. 23,780 ≈ ____________      4. 58,219 ≈ ____________')" class="flex-1 py-2.5 px-4 rounded-xl border-2 border-crimson-800 text-crimson-900 hover:bg-crimson-50 font-bold text-sm transition hc-btn-secondary">
+              Preview Sheet
+            </button>
+            <button type="button" onclick="triggerDownload('Math4_Place_Value_Drills.pdf')" class="py-2.5 px-4 rounded-xl bg-crimson-800 hover:bg-crimson-900 text-white font-bold text-sm transition hc-btn-primary">
+              Download PDF
+            </button>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- SECTION 5: ABOUT PRE-SERVICE TEACHER & ACCESSIBILITY      -->
+    <!-- ========================================================= -->
+    <section id="section-about" aria-labelledby="about-heading" class="hidden space-y-8">
+      
+      <!-- Profile & Mentorship Card -->
+      <div class="bg-white rounded-2xl border-2 border-slate-200 shadow-md overflow-hidden hc-surface">
+        <div class="bg-crimson-800 text-white px-6 py-5 border-b-4 border-gold-500">
+          <span class="text-xs font-extrabold uppercase tracking-widest text-gold-400">Field Study 2 • Participation and Teaching Assistantship</span>
+          <h2 id="about-heading" class="text-2xl sm:text-3xl font-extrabold mt-1">About the Pre-Service Teacher</h2>
+        </div>
+
+        <div class="p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          <!-- Profile Avatar & Quick Info -->
+          <div class="lg:col-span-4 flex flex-col items-center text-center bg-slate-50 rounded-2xl p-6 border border-slate-200 hc-surface">
+            <div class="w-28 h-28 rounded-full bg-gradient-to-br from-crimson-800 to-crimson-950 border-4 border-gold-500 flex items-center justify-center text-gold-400 font-extrabold text-3xl shadow-md mb-4" role="img" aria-label="Initials JPG representing Pre-Service Teacher Joeffrey Pimentel Gusto">
+              JPG
+            </div>
+            <h3 class="text-xl font-extrabold text-slate-900 hc-text-muted">Joeffrey Pimentel Gusto</h3>
+            <p class="text-sm font-bold text-crimson-800 mt-1 hc-text-muted">Pre-Service Teacher • BEED 4C</p>
+            <p class="text-xs text-slate-600 mt-1 hc-text-muted">Bachelor of Elementary Education</p>
+
+            <div class="w-full border-t border-slate-200 my-4"></div>
+
+            <div class="w-full text-left space-y-2.5 text-sm">
+              <div>
+                <span class="block text-xs font-bold uppercase text-slate-500 hc-text-muted">Cooperating School</span>
+                <span class="font-semibold text-slate-900 hc-text-muted">Collado Elementary School</span>
+              </div>
+              <div>
+                <span class="block text-xs font-bold uppercase text-slate-500 hc-text-muted">Cooperating Teacher</span>
+                <span class="font-semibold text-slate-900 hc-text-muted">Teacher Floreza G. Valdez (Teacher IV)</span>
+              </div>
+              <div>
+                <span class="block text-xs font-bold uppercase text-slate-500 hc-text-muted">Assigned Class</span>
+                <span class="font-semibold text-slate-900 hc-text-muted">Grade 4 – Rizal</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bio & Teaching Philosophy -->
+          <div class="lg:col-span-8 space-y-5">
+            <h3 class="text-xl font-extrabold text-crimson-900 hc-text-muted">Greetings, Learners, Parents, and Educators!</h3>
+            <p class="text-slate-800 leading-relaxed hc-text-muted">
+              Hello! I am <strong>Joeffrey Pimentel Gusto</strong>, a fourth-year Bachelor of Elementary Education (<strong>BEED 4C</strong>) pre-service teacher currently completing my <strong>Field Study 2</strong> requirements at <strong>Collado Elementary School</strong>. Under the dedicated guidance and mentorship of my Cooperating Teacher, <strong>Teacher Floreza G. Valdez (Teacher IV)</strong>, I assist in classroom instruction, learner support, and the preparation of inclusive instructional materials for the pupils of <strong>Grade 4 – Rizal</strong>.
+            </p>
+            <p class="text-slate-800 leading-relaxed hc-text-muted">
+              This online repository was created in fulfillment of <strong>Field Study 2 – Activity 3 (Create an Accessible Site for Online Materials)</strong>. My goal is to ensure that every pupil—regardless of learning style, device size, or visual need—can easily navigate, read, watch, and interact with our classroom lessons at school and at home.
+            </p>
+
+            <!-- Accessibility Statement Box -->
+            <div class="rounded-2xl bg-crimson-50 border-2 border-crimson-800/25 p-5 sm:p-6 space-y-3 hc-surface">
+              <div class="flex items-center gap-2.5">
+                <span class="px-2.5 py-1 rounded-md bg-crimson-800 text-gold-400 font-extrabold text-xs uppercase tracking-wider hc-badge">
+                  Accessibility Statement
+                </span>
+                <h4 class="font-extrabold text-crimson-950 text-base hc-text-muted">Commitment to Inclusive Digital Design</h4>
+              </div>
+              <ul class="space-y-2 text-sm text-slate-800 list-disc pl-5 hc-text-muted">
+                <li><strong>High Color Contrast:</strong> Primary crimson/burgundy headers paired with metallic gold accents and dark text on clean light surfaces meet WCAG AA/AAA contrast ratios, supplemented by an instant <em>High Contrast Mode</em> toggle.</li>
+                <li><strong>Descriptive Alt Text:</strong> All icons, school emblems, and instructional diagrams (such as magnetic pole illustrations) include meaningful alternative text for screen readers.</li>
+                <li><strong>Clear, Simple Navigation:</strong> Consistent top navigation tabs, skip-to-content links, keyboard focus rings, resizable text controls (<code>A-</code> / <code>A+</code>), and closed-captioned video transcripts make all materials easy to access.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-crimson-950 text-slate-200 border-t-4 border-gold-500 mt-12 hc-header">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div>
+          <p class="font-extrabold text-white text-base">Grade 4 – Rizal Learning Hub • Collado Elementary School</p>
+          <p class="text-xs text-gold-300 mt-1">
+            Prepared by Joeffrey Pimentel Gusto (BEED 4C) • Cooperating Teacher: Teacher Floreza G. Valdez (Teacher IV)
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-4 text-xs font-semibold">
+          <button type="button" onclick="navigateTo('home')" class="hover:text-gold-400 underline underline-offset-4">Home</button>
+          <button type="button" onclick="navigateTo('science')" class="hover:text-gold-400 underline underline-offset-4">Science 4</button>
+          <button type="button" onclick="navigateTo('english')" class="hover:text-gold-400 underline underline-offset-4">English 4</button>
+          <button type="button" onclick="navigateTo('math')" class="hover:text-gold-400 underline underline-offset-4">Mathematics 4</button>
+          <button type="button" onclick="navigateTo('about')" class="hover:text-gold-400 underline underline-offset-4">Accessibility &amp; About</button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================= -->
+  <!-- ACCESSIBLE MODAL FOR PREVIEWS & INTERACTIVE MINI-GAMES    -->
+  <!-- ========================================================= -->
+  <div id="resource-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/75 p-4 backdrop-blur-sm">
+    <div class="bg-white w-full max-w-2xl rounded-2xl border-2 border-gold-500 shadow-2xl overflow-hidden flex flex-col max-h-[90vh] hc-surface">
+      
+      <!-- Modal Header -->
+      <div class="bg-crimson-800 text-white px-6 py-4 flex items-center justify-between border-b-2 border-gold-500">
+        <div>
+          <span id="modal-subtitle" class="block text-xs font-bold text-gold-300 uppercase tracking-wider">Resource Preview</span>
+          <h3 id="modal-title" class="text-lg sm:text-xl font-extrabold">Title</h3>
+        </div>
+        <button type="button" id="modal-close-btn" onclick="closeModal()" class="p-2 rounded-lg bg-crimson-900 hover:bg-crimson-700 text-gold-400 font-bold" aria-label="Close modal dialog">
+          ✕
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <div id="modal-body" class="p-6 overflow-y-auto space-y-4 text-sm sm:text-base text-slate-800 leading-relaxed hc-text-muted">
+        <!-- Dynamic Content Injected Here -->
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="px-6 py-4 bg-slate-100 border-t border-slate-200 flex justify-end gap-3 hc-surface">
+        <button type="button" onclick="closeModal()" class="px-5 py-2.5 rounded-xl bg-crimson-800 hover:bg-crimson-900 text-white font-bold text-sm transition hc-btn-primary">
+          Close Window
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Banner (Replaces alert()) -->
+  <div id="toast-banner" role="status" aria-live="polite" class="fixed bottom-5 right-5 z-50 hidden max-w-sm bg-crimson-900 text-white border-2 border-gold-500 rounded-xl px-5 py-3.5 shadow-2xl flex items-center gap-3">
+    <span class="text-gold-400 font-extrabold text-lg" aria-hidden="true">✓</span>
+    <p id="toast-message" class="text-sm font-semibold"></p>
+  </div>
+
+  <!-- ========================================================= -->
+  <!-- INTERACTIVE JAVASCRIPT LOGIC                              -->
+  <!-- ========================================================= -->
+  <script>
+    // State variables
+    let currentFontSize = 16;
+    let isHighContrast = false;
+    let lastFocusedElement = null;
+
+    // 1. Navigation Switching
+    function navigateTo(sectionId) {
+      const sections = ['home', 'science', 'english', 'math', 'about'];
+      
+      sections.forEach(id => {
+        const el = document.getElementById(`section-${id}`);
+        if (el) {
+          if (id === sectionId) {
+            el.classList.remove('hidden');
+          } else {
+            el.classList.add('hidden');
+          }
+        }
+      });
+
+      // Update active navigation tab styling & aria-current
+      const navButtons = document.querySelectorAll('.nav-tab');
+      navButtons.forEach(btn => {
+        const isTarget = btn.getAttribute('data-nav') === sectionId;
+        if (isTarget) {
+          btn.classList.add('bg-gold-500', 'text-crimson-950', 'font-bold', 'shadow-sm');
+          btn.classList.remove('text-white', 'hover:bg-crimson-700', 'font-semibold');
+          btn.setAttribute('aria-current', 'page');
+        } else {
+          btn.classList.remove('bg-gold-500', 'text-crimson-950', 'font-bold', 'shadow-sm');
+          btn.classList.add('text-white', 'hover:bg-crimson-700', 'font-semibold');
+          btn.removeAttribute('aria-current');
+        }
+      });
+
+      // Close mobile menu if open
+      const nav = document.getElementById('primary-nav');
+      const mobileBtn = document.getElementById('mobile-menu-btn');
+      if (window.innerWidth < 1024 && !nav.classList.contains('hidden')) {
+        nav.classList.add('hidden');
+        mobileBtn.setAttribute('aria-expanded', 'false');
+      }
+
+      // Scroll smoothly to top of main content
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // 2. Mobile Menu Toggle
+    function toggleMobileMenu() {
+      const nav = document.getElementById('primary-nav');
+      const btn = document.getElementById('mobile-menu-btn');
+      const isHidden = nav.classList.contains('hidden');
+      
+      if (isHidden) {
+        nav.classList.remove('hidden');
+        nav.classList.add('flex');
+        btn.setAttribute('aria-expanded', 'true');
+      } else {
+        nav.classList.add('hidden');
+        nav.classList.remove('flex');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    }
+
+    // 3. Accessibility: Font Size Scaling
+    function adjustFontSize(delta) {
+      currentFontSize = Math.min(22, Math.max(14, currentFontSize + delta));
+      document.documentElement.style.setProperty('--base-font-size', `${currentFontSize}px`);
+      showToast(`Text size set to ${Math.round((currentFontSize / 16) * 100)}%`);
+    }
+
+    function resetFontSize() {
+      currentFontSize = 16;
+      document.documentElement.style.setProperty('--base-font-size', '16px');
+      showToast('Text size reset to 100%');
+    }
+
+    // 4. Accessibility: High Contrast Mode Toggle
+    function toggleHighContrast() {
+      isHighContrast = !isHighContrast;
+      const body = document.body;
+      const btn = document.getElementById('contrast-toggle');
+      const label = document.getElementById('contrast-label');
+
+      if (isHighContrast) {
+        body.classList.add('high-contrast');
+        btn.setAttribute('aria-pressed', 'true');
+        label.textContent = 'High Contrast: On';
+        showToast('High Contrast Mode enabled');
+      } else {
+        body.classList.remove('high-contrast');
+        btn.setAttribute('aria-pressed', 'false');
+        label.textContent = 'High Contrast: Off';
+        showToast('High Contrast Mode disabled');
+      }
+    }
+
+    // 5. Accessible Resource Preview Modal
+    function openResourceModal(type, title, subtitle, content) {
+      lastFocusedElement = document.activeElement;
+      const modal = document.getElementById('resource-modal');
+      document.getElementById('modal-title').textContent = title;
+      document.getElementById('modal-subtitle').textContent = subtitle;
+
+      const bodyEl = document.getElementById('modal-body');
+      const formattedLines = content.split('\n').map(line => 
+        `<p class="p-3 rounded-xl bg-slate-50 border border-slate-200 hc-surface">${line}</p>`
+      ).join('');
+
+      bodyEl.innerHTML = `
+        <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-crimson-800 hc-text-muted">
+          <span>Accessible Text View • Screen-Reader Friendly</span>
+        </div>
+        <div class="space-y-2.5">${formattedLines}</div>
+      `;
+
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.getElementById('modal-close-btn').focus();
+    }
+
+    // 6. Interactive Mini-Game Launcher inside Modal
+    function openGameModal(gameTitle, subject) {
+      lastFocusedElement = document.activeElement;
+      const modal = document.getElementById('resource-modal');
+      document.getElementById('modal-title').textContent = gameTitle;
+      document.getElementById('modal-subtitle').textContent = 'Interactive Quick-Check Activity';
+
+      const questions = {
+        science: {
+          prompt: 'Quick Challenge: Which of these classroom items will be ATTRACTED to a bar magnet?',
+          options: [
+            { text: 'Steel Paperclip', correct: true, feedback: 'Correct! Steel contains iron, which is a magnetic material.' },
+            { text: 'Plastic Ruler', correct: false, feedback: 'Not quite! Plastic is non-magnetic. Try again!' },
+            { text: 'Wooden Pencil', correct: false, feedback: 'Not quite! Wood is non-magnetic. Try again!' }
+          ]
+        },
+        english: {
+          prompt: 'Quick Challenge: Read the sentence — "After the heavy rain, a bright rainbow appeared in the sky." Which signal word shows sequence?',
+          options: [
+            { text: 'After', correct: true, feedback: 'Great job! "After" helps show the order or sequence of events.' },
+            { text: 'Rainbow', correct: false, feedback: 'Not quite! "Rainbow" is a noun. Look for the time-order word!' },
+            { text: 'Bright', correct: false, feedback: 'Not quite! "Bright" is an adjective describing the rainbow.' }
+          ]
+        },
+        math: {
+          prompt: 'Quick Challenge: In the number 48,592, what is the VALUE of the digit 8?',
+          options: [
+            { text: '8,000', correct: true, feedback: 'Awesome! The digit 8 is in the Thousands place, so its value is 8,000.' },
+            { text: '800', correct: false, feedback: 'Close! Check the place value chart—8 is to the left of the hundreds place.' },
+            { text: '80,000', correct: false, feedback: 'Not quite! The digit 4 is in the Ten Thousands place.' }
+          ]
+        }
+      };
+
+      const q = questions[subject];
+      const optionsHtml = q.options.map((opt, idx) => `
+        <button type="button" onclick="checkGameAnswer(${opt.correct}, '${opt.feedback.replace(/'/g, "\\'")}')" 
+          class="w-full text-left p-4 rounded-xl border-2 border-crimson-800/30 hover:border-crimson-800 hover:bg-crimson-50 font-bold text-slate-900 transition hc-btn-secondary">
+          ${idx + 1}. ${opt.text}
+        </button>
+      `).join('');
+
+      document.getElementById('modal-body').innerHTML = `
+        <div class="p-4 rounded-xl bg-amber-50 border border-gold-500 text-slate-900 font-semibold hc-surface">
+          ${q.prompt}
+        </div>
+        <div class="space-y-2.5" role="group" aria-label="Game Answer Choices">
+          ${optionsHtml}
+        </div>
+        <div id="game-feedback" aria-live="polite" class="hidden p-4 rounded-xl font-bold text-sm"></div>
+      `;
+
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.getElementById('modal-close-btn').focus();
+    }
+
+    function checkGameAnswer(isCorrect, feedback) {
+      const fbEl = document.getElementById('game-feedback');
+      fbEl.classList.remove('hidden', 'bg-emerald-100', 'text-emerald-950', 'bg-rose-100', 'text-rose-950');
+      if (isCorrect) {
+        fbEl.classList.add('bg-emerald-100', 'text-emerald-950', 'border-2', 'border-emerald-600');
+      } else {
+        fbEl.classList.add('bg-rose-100', 'text-rose-950', 'border-2', 'border-rose-600');
+      }
+      fbEl.textContent = feedback;
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('resource-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      if (lastFocusedElement) {
+        lastFocusedElement.focus();
+      }
+    }
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const modal = document.getElementById('resource-modal');
+        if (!modal.classList.contains('hidden')) {
+          closeModal();
+        }
+      }
+    });
+
+    // 7. Simulated Accessible File Download Notification
+    let toastTimeout;
+    function triggerDownload(filename) {
+      showToast(`Preparing accessible file: ${filename}`);
+    }
+
+    function showToast(message) {
+      const banner = document.getElementById('toast-banner');
+      const msgEl = document.getElementById('toast-message');
+      msgEl.textContent = message;
+      banner.classList.remove('hidden');
+
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        banner.classList.add('hidden');
+      }, 3500);
+    }
+  </script>
+</body>
+</html>
